@@ -1,0 +1,15 @@
+PROJECT REPORT
+We have created IBM acadamic initiative account.
+We have created the servics responsible for creating CHAT BOT.
+We have also created the some of the servics like language translator,text to speech & speech to text.
+We have created the watson assisant using the above services.
+We have setup the required APIs to integrate services with CHATBOT.
+Testing the assisant:
+                -Testing the CHATBOT with all the responses and making it ready.
+Project Title: EVENT BOT
+Project description:The company on an institution organising the event can setup the CHATBOT to answer the common questions like:
+What are the details of the event?
+What are the different domains in the event?
+What is the registration process for particular domain?
+CHATBOT takes name and email id of the user and gets registered to the event.
+It also provides the modes of the payment to get registered.

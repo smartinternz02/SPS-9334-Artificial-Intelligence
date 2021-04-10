@@ -1,0 +1,682 @@
+{
+  "intents": [
+    {
+      "intent": "Details",
+      "examples": [
+        {
+          "text": "how can I get registered?"
+        },
+        {
+          "text": "Registration process?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Domains",
+      "examples": [
+        {
+          "text": "What are the Domains?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Enquiry",
+      "examples": [
+        {
+          "text": "Can I get the details of the event?"
+        },
+        {
+          "text": "Event details?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "good afternoon"
+        },
+        {
+          "text": "good evening"
+        },
+        {
+          "text": "good morning"
+        },
+        {
+          "text": "hello!"
+        },
+        {
+          "text": "hi!"
+        },
+        {
+          "text": "hlo"
+        },
+        {
+          "text": "Hlo!"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "userdetails",
+      "examples": [
+        {
+          "text": "How do I register for the event?"
+        },
+        {
+          "text": "What is registration process?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Details",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Artificial intelligence",
+          "synonyms": [
+            "ai"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "ethical hacking",
+          "synonyms": [
+            "ethical hacking"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Robotics",
+          "synonyms": [
+            "robotics"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Domain",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Domains",
+          "synonyms": [
+            "categoies",
+            "domain",
+            "subdomains"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "\\b[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,}\\b"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "details",
+          "synonyms": [
+            "detail",
+            "information"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "good afternoon",
+          "synonyms": [
+            "ga",
+            "gud aftn"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good evening",
+          "synonyms": [
+            "ge",
+            "gud evng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good morning",
+          "synonyms": [
+            "gm",
+            "gud mrng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "hello",
+          "synonyms": [
+            "helllooo",
+            "helloo"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "hi!",
+          "synonyms": [
+            "hey",
+            "hii"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Payment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "card",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "COD",
+          "synonyms": [
+            "cash"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "userdetails",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "registration",
+          "synonyms": [
+            "registered",
+            "registrations"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_5_1617984366603",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_5_1617984526011",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1617986497100",
+      "previous_sibling": "node_4_1618031915142"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "we are accepting only COD and CARD payments. enter your mode of payment."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1617987544884",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1617987544896",
+      "previous_sibling": "handler_8_1617987544896"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1617987544884",
+      "context": {
+        "Payment": "@Payment"
+      },
+      "conditions": "@Payment",
+      "event_name": "input",
+      "dialog_node": "handler_8_1617987544896"
+    },
+    {
+      "type": "standard",
+      "title": "Details",
+      "parent": "node_3_1617976589993",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Details || @Details",
+      "dialog_node": "node_2_1617977309874"
+    },
+    {
+      "type": "standard",
+      "title": "Domain",
+      "output": {
+        "generic": [
+          {
+            "title": "Domains",
+            "options": [
+              {
+                "label": "Artificial intelligence(AI)",
+                "value": {
+                  "input": {
+                    "text": "Artificial intelligence(AI)"
+                  }
+                }
+              },
+              {
+                "label": "Robotics",
+                "value": {
+                  "input": {
+                    "text": "Robotics"
+                  }
+                }
+              },
+              {
+                "label": "Ethical Hacking",
+                "value": {
+                  "input": {
+                    "text": "Ethical Hacking"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Domains || @Domain",
+      "dialog_node": "node_3_1617976589993",
+      "previous_sibling": "node_7_1617975616370"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Greetings || @Greetings",
+      "dialog_node": "node_4_1617975163742",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Deletingcontext",
+      "output": {
+        "delete": "<?context.remove('details')?><?context.remove('domain')?><?context.remove('email')?><?context.remove('registration')?><?context.remove('userdetails')?><?context.remove('payment')?>",
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1617984526011",
+      "dialog_node": "node_4_1618031915142"
+    },
+    {
+      "type": "standard",
+      "title": "Userdetails",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "enter your name & email id"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {},
+      "conditions": "#userdetails || @userdetails",
+      "dialog_node": "node_5_1617984366603",
+      "previous_sibling": "node_3_1617976589993"
+    },
+    {
+      "type": "frame",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you, you are successfully registered to CYBER DEMONS 2021 through $Payment ."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1617984366603",
+      "context": {
+        "email": "@email.literal"
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "@email",
+      "dialog_node": "node_5_1617984526011"
+    },
+    {
+      "type": "standard",
+      "title": "Enquiry",
+      "output": {
+        "generic": [
+          {
+            "title": "Poster",
+            "source": "https://i.postimg.cc/nzVbWXqZ/invitation.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Enquiry || @Enquiry",
+      "dialog_node": "node_7_1617975616370",
+      "previous_sibling": "node_4_1617975163742"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Morining, Welcome to CYBER DEMONS 2021, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1617975163742",
+      "conditions": "@Greetings:(good morning)",
+      "dialog_node": "response_10_1617975249996",
+      "previous_sibling": "response_3_1617975226434"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello, Welcome to CYBER DEMONS 2021, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1617975163742",
+      "conditions": "@Greetings:hello",
+      "dialog_node": "response_3_1617975226434",
+      "previous_sibling": "response_6_1617975196556"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Afternoon, Welcome to CYBER DEMONS 2021, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1617975163742",
+      "conditions": "@Greetings:(good afternoon)",
+      "dialog_node": "response_3_1617975283379",
+      "previous_sibling": "response_10_1617975249996"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "disabled": true,
+      "dialog_node": "response_4_1617975095911"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Registration fee for Ethical Hacking  is 1000/-"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1617977309874",
+      "conditions": "@Details:(ethical hacking)",
+      "dialog_node": "response_4_1617980012257",
+      "previous_sibling": "response_9_1617977510094"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi, Welcome to CYBER DEMONS 2021, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1617975163742",
+      "conditions": "@Greetings:(hi!)",
+      "dialog_node": "response_6_1617975196556"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Evening, Welcome to CYBER DEMONS 2021, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1617975163742",
+      "conditions": "@Greetings:(good evening)",
+      "dialog_node": "response_7_1617975326559",
+      "previous_sibling": "response_3_1617975283379"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Registration fee for Robotics is 2000/-"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1617977309874",
+      "conditions": "@Details:Robotics",
+      "dialog_node": "response_8_1617980041747",
+      "previous_sibling": "response_4_1617980012257"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Registration fee for AI is 1200\\-"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1617977309874",
+      "conditions": "@Details:(Artificial intelligence)",
+      "dialog_node": "response_9_1617977510094"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1617984526011",
+      "variable": "$Payment",
+      "dialog_node": "slot_2_1617987544884",
+      "previous_sibling": "handler_1_1617986497100"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello ,I'm Event Bot."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "EVENT",
+  "language": "en",
+  "description": ""
+}
